@@ -128,7 +128,6 @@
                 placeholder="Select Network" 
                 :teleported="false"
                 @change="onNetworkSelected"
-                disabled
                 filterable
               >
                 <el-option
@@ -148,7 +147,6 @@
                 style="width:200px"
                 placeholder="Select Storage"
                 :teleported="false"
-                disabled
                 filterable
               >
                 <el-option key="swarm" label="Swarm Network" value="swarm"/>
@@ -373,16 +371,12 @@ const confirmSwitchNetwork = async () => {
     }
 
     element.elMessage('success', 'Config network success!');
-
-    return true;
   }catch(e){
     if(e.stack.length > 300){
       e.stack = e.stack.slice(0, 300);
     }
     element.elMessage('error', e.stack);
   }
-
-  return false;
 }
 
 //on click to clear transtractions
@@ -427,19 +421,22 @@ const onNetworkConfig = async () => {
 //on menus selected
 const handleSelect = (key: string, keyPath: string[]) => {
   activeIndex.value = key;
-  connect.connectState.activeIndex.value = Number(activeIndex.value);
+  connect.connectState.activeIndex.value = activeIndex.value;
 
   tools.setUrlParamter('activeIndex', activeIndex.value);
 };    
 
 //try get activeIndex from the url paramter
 try{
-  activeIndex.value = parseInt(tools.getUrlParamter('activeIndex'));
-  if(isNaN(activeIndex.value) || activeIndex.value < 1 || activeIndex.value > 4){
-    activeIndex.value = 1;
+  activeIndex.value = String(tools.getUrlParamter('activeIndex'));
+  if(activeIndex.value != '1' && 
+    activeIndex.value != '2' && 
+    activeIndex.value != '3' &&
+    activeIndex.value != '4'){
+    activeIndex.value = '1';
   }
 }catch(e){
-  activeIndex.value = 1;
+  activeIndex.value = '1';
 }
 
 //set activeIndex to connectState and location.href
