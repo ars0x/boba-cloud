@@ -39,7 +39,7 @@ To keep the high quality of the NFTs, the total supply has a limit of max 15000,
     
   *6. see our daemon website https://boba-cloud.vercel.app*
   
-  *7. see our daemon video*
+  *7. see our daemon video https://www.youtube.com/watch?v=SCfInoNPEMU*
 
 
 ***How it works***:
