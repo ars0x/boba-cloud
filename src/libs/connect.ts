@@ -10,13 +10,13 @@ import { shortString } from "./tools"
 import { ref } from "vue"
 
 export const connectState = {
-  chainId: 28,
+  chainId: 1,
   chainName: '',
   userName: ref(''),
   shortName: ref(''),  
   userAddr: ref(''),
   shortAddr: ref(''),
-  currency: 'BOBA',
+  currency: 'ETH',
   signed: false,
   provider: Object(),
   connected: false,
